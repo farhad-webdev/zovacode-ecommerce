@@ -4,9 +4,9 @@
   --ink: #10100f;
   --muted: #77756f;
   --line: #deddd8;
-  --serif: "DM Serif Display", Georgia, serif;
-  --sans: "DM Sans", Arial, sans-serif;
-  --display: "Space Grotesk", var(--sans);
+  --serif: "Raleway", Arial, sans-serif;
+  --sans: "Raleway", Arial, sans-serif;
+  --display: "Raleway", var(--sans);
   --gutter: clamp(20px, 4vw, 64px);
   --ease: cubic-bezier(.2, .75, .25, 1);
 }
