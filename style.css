@@ -16,6 +16,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 86px; }
 .icon-library { position: absolute; width: 0; height: 0; overflow: hidden; }
 .icon { display: inline-block; width: 14px; height: 14px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle; }
 .icon-arrow { width: 12px; height: 12px; transition: transform .25s ease; }
+.pill-button .icon-arrow, .category-cta .icon-arrow { width: 14px; height: 14px; }
 .pill-button:hover .icon-arrow, .text-link:hover .icon-arrow, .announcement a:hover .icon-arrow { transform: translate(2px,-2px); }
 body {
   margin: 0;
@@ -166,7 +167,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .manifesto-secondary { aspect-ratio: 4 / 3; }
 .manifesto-secondary img { object-position: center; }
 .secondary-mark { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,.16); color: white; font-family: var(--display); font-size: 11px; letter-spacing: .2em; }
-.pill-button { min-height: 38px; display: inline-flex; align-items: center; justify-content: center; gap: 18px; padding: 0 18px; border: 1px solid transparent; border-radius: 50px; font-size: 10px; font-weight: 600; transition: color .25s ease, background .25s ease, transform .25s ease; }
+.pill-button { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 0 22px; border: 1px solid transparent; border-radius: 50px; font-size: 12px; font-weight: 600; transition: color .25s ease, background .25s ease, transform .25s ease; }
 .pill-button:hover { transform: translateY(-2px); }
 .pill-dark { background: var(--ink); color: white; }
 .pill-dark:hover { background: #383735; }
@@ -192,7 +193,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .category-row > .icon-arrow { width: 14px; height: 14px; transition: transform .25s ease; }
 .category-row:hover > .icon-arrow { transform: translate(2px,-2px); }
 .category-row.category-featured { min-height: 75px; }
-.category-cta { display: inline-flex; align-items: center; gap: 7px; padding: 9px 13px; border-radius: 40px; background: var(--ink); color: white; font-size: 9px !important; font-weight: 500; white-space: nowrap; }
+.category-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 40px; background: var(--ink); color: white; font-size: 11px !important; font-weight: 600; white-space: nowrap; }
 .category-footnote { margin-top: 16px; color: #85827b; font-size: 8px; letter-spacing: .14em; }
 .collection-visuals { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
 .collection-photo { position: relative; display: block; overflow: hidden; border-radius: 11px; background: #e7e2da; }
@@ -401,7 +402,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .manifesto-copy h2 { font-size: clamp(37px, 9.2vw, 59px); line-height: .98; }
   .manifesto-bottom { grid-template-columns: 1fr 1fr; gap: 18px; align-items: end; margin-top: 30px; }
   .manifesto-note > p:not(.eyebrow) { font-size: 10px; line-height: 1.65; }
-  .manifesto-note .pill-button { gap: 8px; padding: 0 13px; font-size: 9px; }
+  .manifesto-note .pill-button { min-height: 44px; gap: 8px; padding: 0 12px; font-size: 11px; }
   .manifesto-secondary { width: 100%; }
   .manifesto-banner { min-height: 92px; gap: 10px; padding: 20px var(--gutter); font-size: clamp(29px, 8vw, 50px); }
   .banner-center { gap: 6px; max-width: 108px; font-size: 6px; letter-spacing: .1em; text-align: center; }
@@ -421,7 +422,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .lookbook-heading h2 { font-size: clamp(40px, 10vw, 58px); }
   .lookbook-intro { align-items: end; }
   .lookbook-intro > div > p:last-child { max-width: 280px; font-size: 10px; }
-  .lookbook-intro .pill-button { flex-shrink: 0; min-height: 34px; padding: 0 12px; font-size: 8px; }
+  .lookbook-intro .pill-button { flex-shrink: 0; min-height: 44px; gap: 10px; padding: 0 14px; font-size: 11px; }
   .lookbook-grid { gap: 10px; }
   .look-card { aspect-ratio: 3 / 4.5; border-radius: 7px; }
   .look-card figcaption { right: 5px; bottom: 5px; left: 5px; padding: 8px 7px; font-size: 6px; letter-spacing: .04em; }
