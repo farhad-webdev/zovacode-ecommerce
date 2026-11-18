@@ -103,11 +103,11 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .menu-toggle { display: none; }
 .icon-button { border: 0; background: none; padding: 9px; cursor: pointer; }
 
-.page-gutter { padding: 12px var(--gutter) 0; }
+.page-gutter { padding: 12px clamp(20px, 3vw, 44px) 0; }
 .hero-card {
   position: relative;
   isolation: isolate;
-  min-height: min(690px, 74vw);
+  min-height: min(715px, 74vw);
   height: min(78vh, 790px);
   overflow: hidden;
   display: flex;
