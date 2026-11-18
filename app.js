@@ -3,26 +3,26 @@
 
   const imageUrls = {
     hero: "assets/hero-city.jpg",
-    knit: "assets/manifesto-knit.jpg",
+    knit: "assets/lookbook-knit.jpg",
     runner: "assets/storm-runner.jpg",
     street: "assets/city-look.jpg",
-    look1: "assets/lookbook-everyday.jpg",
-    look2: "assets/lookbook-club.jpg",
-    look3: "assets/lookbook-knit.jpg",
-    hoodie: "assets/owners-club.jpg",
-    closeup: "assets/hoodie-detail.jpg",
+    everyday: "assets/lookbook-everyday.jpg",
+    club: "assets/lookbook-club.jpg",
+    hoodie: "assets/hoodie-detail.jpg",
+    tee: "assets/manifesto-streetwear.jpg",
+    tote: "assets/manifesto-knit.jpg",
   };
 
   const products = [
     { id: "after-hours-hoodie", name: "After Hours Hoodie", category: "T-shirts & Outerwear", price: 88, image: imageUrls.hoodie, tag: "New drop", audience: ["Men", "Women"], sizes: ["XS", "S", "M", "L", "XL"] },
-    { id: "studio-tee", name: "Studio Heavyweight Tee", category: "T-shirts & Outerwear", price: 48, image: imageUrls.street, tag: "Best seller", audience: ["Men", "Women"], sizes: ["XS", "S", "M", "L", "XL"] },
-    { id: "off-grid-crew", name: "Off Grid Crewneck", category: "T-shirts & Outerwear", price: 76, image: imageUrls.look3, tag: "Limited", audience: ["Men", "Women"], sizes: ["XS", "S", "M", "L", "XL"] },
-    { id: "city-denim", name: "City Straight Denim", category: "Denim", price: 112, image: imageUrls.look1, tag: "New drop", audience: ["Men", "Women"], sizes: ["28", "30", "32", "34", "36"] },
+    { id: "studio-tee", name: "Studio Heavyweight Tee", category: "T-shirts & Outerwear", price: 48, image: imageUrls.tee, tag: "Best seller", audience: ["Men", "Women"], sizes: ["XS", "S", "M", "L", "XL"] },
+    { id: "off-grid-crew", name: "Off Grid Crewneck", category: "T-shirts & Outerwear", price: 76, image: imageUrls.knit, tag: "Limited", audience: ["Men", "Women"], sizes: ["XS", "S", "M", "L", "XL"] },
+    { id: "city-denim", name: "City Straight Denim", category: "Denim", price: 112, image: imageUrls.everyday, tag: "New drop", audience: ["Men", "Women"], sizes: ["28", "30", "32", "34", "36"] },
     { id: "utility-cargo", name: "Utility Cargo Pant", category: "Denim", price: 98, image: imageUrls.street, tag: "Everyday", audience: ["Men", "Women"], sizes: ["28", "30", "32", "34", "36"] },
     { id: "storm-runner", name: "Storm Runner 01", category: "Footwear", price: 138, image: imageUrls.runner, tag: "New drop", audience: ["Men", "Women"], sizes: ["7", "8", "9", "10", "11"] },
-    { id: "night-shift", name: "Night Shift Sneaker", category: "Footwear", price: 124, image: imageUrls.look2, tag: "Limited", audience: ["Men", "Women"], sizes: ["7", "8", "9", "10", "11"] },
-    { id: "signal-cap", name: "Signal 6-Panel Cap", category: "Accessories", price: 38, image: imageUrls.knit, tag: "Essential", audience: ["Men", "Women"], sizes: ["One size"] },
-    { id: "everyday-tote", name: "Everyday Carry Tote", category: "Accessories", price: 34, image: imageUrls.closeup, tag: "Essential", audience: ["Men", "Women"], sizes: ["One size"] },
+    { id: "night-shift", name: "Night Shift Sneaker", category: "Footwear", price: 124, image: imageUrls.club, tag: "Limited", audience: ["Men", "Women"], sizes: ["7", "8", "9", "10", "11"] },
+    { id: "signal-cap", name: "Signal 6-Panel Cap", category: "Accessories", price: 38, image: imageUrls.hero, tag: "Essential", audience: ["Men", "Women"], sizes: ["One size"] },
+    { id: "everyday-tote", name: "Everyday Carry Tote", category: "Accessories", price: 34, image: imageUrls.tote, tag: "Essential", audience: ["Men", "Women"], sizes: ["One size"] },
   ];
 
   const quotes = [
