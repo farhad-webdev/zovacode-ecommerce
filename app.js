@@ -338,6 +338,73 @@
     });
   });
 
+  const lookbookTrack = document.querySelector("#lookbook-track");
+  const lookbookSlides = Array.from(lookbookTrack.querySelectorAll(".look-card"));
+  const lookbookProgressTrack = document.querySelector(".lookbook-progress-track");
+  const lookbookProgressFill = document.querySelector("[data-lookbook-progress]");
+  const lookbookCaption = document.querySelector("[data-lookbook-caption]");
+  const lookbookStatus = document.querySelector("[data-lookbook-status]");
+  const lookbookButtons = Array.from(document.querySelectorAll("[data-lookbook-step]"));
+  let lookbookStartIndex = 0;
+  let lookbookMaxIndex = 0;
+  let lookbookScrollFrame = 0;
+
+  function getLookbookStep() {
+    if (lookbookSlides.length < 2) return 0;
+    return lookbookSlides[1].getBoundingClientRect().left - lookbookSlides[0].getBoundingClientRect().left;
+  }
+
+  function updateLookbookSlider() {
+    const step = getLookbookStep();
+    const maxScroll = Math.max(0, lookbookTrack.scrollWidth - lookbookTrack.clientWidth);
+    lookbookMaxIndex = step ? Math.round(maxScroll / step) : 0;
+    lookbookStartIndex = step ? Math.max(0, Math.min(lookbookMaxIndex, Math.round(lookbookTrack.scrollLeft / step))) : 0;
+
+    const visibleCount = step ? Math.min(lookbookSlides.length, Math.max(1, Math.round(lookbookTrack.clientWidth / step))) : lookbookSlides.length;
+    const endIndex = Math.min(lookbookSlides.length, lookbookStartIndex + visibleCount);
+    const progress = ((lookbookStartIndex + 1) / (lookbookMaxIndex + 1)) * 100;
+    const caption = lookbookSlides[lookbookStartIndex].querySelector("figcaption span").textContent;
+
+    lookbookProgressFill.style.width = `${progress}%`;
+    lookbookProgressTrack.setAttribute("aria-valuenow", String(Math.round(progress)));
+    lookbookProgressTrack.setAttribute("aria-valuetext", `Showing items ${lookbookStartIndex + 1} through ${endIndex} of ${lookbookSlides.length}`);
+    lookbookCaption.textContent = caption.replace(/^\d+\s*[—-]\s*/, "");
+    lookbookStatus.textContent = `Showing items ${lookbookStartIndex + 1} through ${endIndex} of ${lookbookSlides.length}`;
+    lookbookButtons.forEach((button) => {
+      const direction = Number(button.dataset.lookbookStep);
+      button.disabled = direction < 0 ? lookbookStartIndex === 0 : lookbookStartIndex === lookbookMaxIndex;
+    });
+  }
+
+  function moveLookbook(direction) {
+    const nextIndex = Math.max(0, Math.min(lookbookMaxIndex, lookbookStartIndex + direction));
+    const step = getLookbookStep();
+    lookbookTrack.scrollTo({
+      left: nextIndex * step,
+      behavior: "auto",
+    });
+    updateLookbookSlider();
+  }
+
+  lookbookButtons.forEach((button) => {
+    button.addEventListener("click", () => moveLookbook(Number(button.dataset.lookbookStep)));
+  });
+  lookbookTrack.addEventListener("scroll", () => {
+    if (lookbookScrollFrame) return;
+    lookbookScrollFrame = requestAnimationFrame(() => {
+      lookbookScrollFrame = 0;
+      updateLookbookSlider();
+    });
+  }, { passive: true });
+  lookbookTrack.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      moveLookbook(event.key === "ArrowLeft" ? -1 : 1);
+    }
+  });
+  window.addEventListener("resize", updateLookbookSlider, { passive: true });
+  updateLookbookSlider();
+
   document.querySelector("#newsletter-form").addEventListener("submit", (event) => {
     event.preventDefault();
     document.querySelector("#newsletter-feedback").textContent = "Thanks for your interest — newsletter sign-up will be available at launch.";
@@ -358,6 +425,32 @@
       event.target.reset();
     }
   });
+
+  const textRevealSelectors = [
+    ".hero-top",
+    ".hero-meta",
+    "#hero-title",
+    ".section-rule",
+    ".manifesto-banner",
+    ".section-kicker",
+    ".collections-heading",
+    ".category-list",
+    ".photo-label",
+    ".collection-stamp",
+    ".collection-caption",
+    ".secondary-mark",
+    ".lookbook-heading",
+    ".look-card figcaption",
+    ".lookbook-progress p",
+    ".community-copy",
+    ".community-feature figcaption",
+    ".newsletter-copy",
+    ".newsletter-form label",
+    ".footer-links",
+    ".footer-mark",
+    ".footer-bottom",
+  ].join(", ");
+  document.querySelectorAll(textRevealSelectors).forEach((item) => item.classList.add("reveal"));
 
   const revealItems = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {

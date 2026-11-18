@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=20261118-hero-heading" />
+    <link rel="stylesheet" href="style.css?v=20261118-lookbook-reveal-hero-bottom" />
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -160,21 +160,43 @@
             <a class="pill-button pill-outline" href="#community">Meet the collective <svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></a>
           </div>
         </div>
-        <div class="lookbook-grid">
-          <figure class="look-card look-card-one">
+        <div class="lookbook-grid" id="lookbook-track" role="region" aria-label="Lookbook collection" aria-roledescription="carousel" tabindex="0">
+          <figure class="look-card look-card-one" role="group" aria-roledescription="slide" aria-label="1 of 6">
             <img src="assets/lookbook-everyday.jpg" alt="Everyday layers for a late afternoon in the city" loading="lazy" />
             <figcaption><span>01 — OWN YOUR EVERYDAY</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></figcaption>
           </figure>
-          <figure class="look-card look-card-two">
+          <figure class="look-card look-card-two" role="group" aria-roledescription="slide" aria-label="2 of 6">
             <img src="assets/lookbook-club.jpg" alt="A model in a neutral hoodie walking through the city" loading="lazy" />
             <figcaption><span>02 — THE OWNER'S CLUB</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></figcaption>
           </figure>
-          <figure class="look-card look-card-three">
+          <figure class="look-card look-card-three" role="group" aria-roledescription="slide" aria-label="3 of 6">
             <img src="assets/lookbook-knit.jpg" alt="Warm knitwear meets a refined, relaxed fit" loading="lazy" />
             <figcaption><span>03 — COMFORT IN EXPRESSION</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></figcaption>
           </figure>
+          <figure class="look-card look-card-four" role="group" aria-roledescription="slide" aria-label="4 of 6">
+            <img src="assets/owners-club.jpg" alt="A group of friends in coordinated streetwear on a city street" loading="lazy" />
+            <figcaption><span>04 — STREETWEAR, TOGETHER</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></figcaption>
+          </figure>
+          <figure class="look-card look-card-five" role="group" aria-roledescription="slide" aria-label="5 of 6">
+            <img src="assets/hero-city.jpg" alt="A woman in layered streetwear sitting on city steps" loading="lazy" />
+            <figcaption><span>05 — OWN THE CITY</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></figcaption>
+          </figure>
+          <figure class="look-card look-card-six" role="group" aria-roledescription="slide" aria-label="6 of 6">
+            <img src="assets/manifesto-streetwear.jpg" alt="A woman wearing a graphic blue jersey with relaxed streetwear" loading="lazy" />
+            <figcaption><span>06 — COURT TO CONCRETE</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></figcaption>
+          </figure>
         </div>
-        <div class="lookbook-progress"><span></span><p>COMFORT IN EXPRESSION.</p></div>
+        <div class="lookbook-progress">
+          <div class="lookbook-slider-controls" role="group" aria-label="Lookbook controls">
+            <button type="button" data-lookbook-step="-1" aria-label="Previous lookbook items" aria-controls="lookbook-track" disabled><svg class="icon" aria-hidden="true"><use href="#icon-arrow-left" /></svg></button>
+            <button type="button" data-lookbook-step="1" aria-label="Next lookbook items" aria-controls="lookbook-track"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-right" /></svg></button>
+          </div>
+          <div class="lookbook-progress-track" role="progressbar" aria-label="Lookbook position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25" aria-valuetext="Showing items 1 through 3 of 6">
+            <span data-lookbook-progress></span>
+          </div>
+          <p data-lookbook-caption>OWN YOUR EVERYDAY</p>
+          <span class="sr-only" data-lookbook-status aria-live="polite">Showing items 1 through 3 of 6</span>
+        </div>
       </section>
 
       <section class="community section-wrap" id="community">
