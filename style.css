@@ -240,12 +240,19 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .shop-page-products-heading h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 600; letter-spacing: -.07em; line-height: 1; }
 .shop-page-products-heading > span { padding-bottom: 5px; color: var(--muted); font-size: 8px; font-weight: 600; letter-spacing: .13em; white-space: nowrap; }
 .product-grid.product-grid-page { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.6vw, 36px); margin-top: 28px; }
+.product-grid-page .product-card { transition: transform .3s var(--ease); }
+.product-grid-page .product-card:hover { transform: translateY(-3px); }
 .product-grid-page .product-image { border-radius: 9px; }
-.product-grid-page .product-tag { top: 11px; left: 11px; padding: 7px 10px; font-size: 8px; }
+.product-grid-page .product-tag { top: 11px; left: 11px; padding: 7px 10px; background: rgba(248,247,244,.94); font-size: 8px; letter-spacing: .08em; backdrop-filter: blur(8px); }
 .product-grid-page .product-info { min-height: 42px; align-items: center; padding: 13px 0 10px; font-size: 12px; }
+.product-grid-page .product-info strong { font-weight: 600; letter-spacing: -.02em; }
+.product-grid-page .product-info > span { color: #625f59; font-weight: 500; }
 .product-grid-page .product-buy-row { gap: 9px; }
-.product-grid-page .product-buy-row select { min-height: 43px; padding: 10px 12px; border-radius: 4px; font-size: 10px; }
-.product-grid-page .product-buy-row button { min-height: 43px; padding: 0 17px; border-radius: 4px; font-size: 9px; letter-spacing: .02em; }
+.product-grid-page .product-buy-row select { min-height: 43px; padding: 10px 12px; border-color: #d6d3cd; border-radius: 4px; background: var(--paper); cursor: pointer; font-size: 10px; transition: border-color .2s ease, box-shadow .2s ease; }
+.product-grid-page .product-buy-row select:hover { border-color: #aaa69d; }
+.product-grid-page .product-buy-row select:focus-visible { outline: 2px solid rgba(154,110,61,.38); outline-offset: 2px; border-color: #9a6e3d; }
+.product-grid-page .product-buy-row button { min-height: 43px; padding: 0 17px; border-radius: 4px; font-size: 9px; letter-spacing: .02em; transition: background .2s ease, transform .2s ease; }
+.product-grid-page .product-buy-row button:hover { transform: translateY(-1px); }
 .lookbook { padding-top: 90px; padding-bottom: 90px; border-bottom: 1px solid var(--line); }
 .lookbook-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: end; margin-bottom: 40px; }
 .lookbook-heading h2 { font-size: clamp(36px, 5.8vw, 74px); font-weight: 600; line-height: .97; letter-spacing: -.075em; }
