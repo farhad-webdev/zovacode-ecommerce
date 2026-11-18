@@ -135,10 +135,10 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   position: relative;
   margin: 0 0 -0.07em -.035em;
   font-family: var(--display);
-  font-size: clamp(68px, 12.6vw, 192px);
+  font-size: clamp(50px, 12.6vw, 156px);
   font-weight: 700;
   line-height: .79;
-  letter-spacing: -.105em;
+  letter-spacing: -5px;
   white-space: nowrap;
 }
 .hero h1 > span { color: #c5b7a3; }
