@@ -244,12 +244,6 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .product-grid-page .product-buy-row { gap: 8px; }
 .product-grid-page .product-buy-row select { padding: 10px; font-size: 10px; }
 .product-grid-page .product-buy-row button { padding: 0 14px; font-size: 9px; }
-.shop-page-footer { display: flex; justify-content: space-between; align-items: center; gap: 28px; padding: 30px var(--gutter); background: #111; color: white; }
-.shop-page-footer .wordmark { position: static; transform: none; font-size: 16px; }
-.shop-page-footer nav { display: flex; flex-wrap: wrap; gap: 22px; }
-.shop-page-footer nav a, .shop-page-footer > span { color: #aaa9a4; font-size: 8px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
-.shop-page-footer nav a[aria-current="page"] { color: white; }
-
 .lookbook { padding-top: 90px; padding-bottom: 90px; border-bottom: 1px solid var(--line); }
 .lookbook-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: end; margin-bottom: 40px; }
 .lookbook-heading h2 { font-size: clamp(36px, 5.8vw, 74px); font-weight: 600; line-height: .97; letter-spacing: -.075em; }
@@ -414,7 +408,6 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .category-row > span:first-child { font-size: 17px; }
   .collection-visuals { gap: 13px; }
   .product-grid.product-grid-page { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .shop-page-footer { flex-wrap: wrap; }
   .lookbook-grid { --lookbook-gap: 18px; }
   .look-card { flex-basis: calc((100% - var(--lookbook-gap)) / 2); }
   .community { gap: 35px; }
@@ -493,9 +486,6 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .product-grid-page .product-buy-row { gap: 5px; }
   .product-grid-page .product-buy-row select { padding: 8px 5px; font-size: 9px; }
   .product-grid-page .product-buy-row button { padding: 0 8px; font-size: 8px; }
-  .shop-page-footer { flex-direction: column; align-items: flex-start; gap: 20px; }
-  .shop-page-footer nav { gap: 16px; }
-  .shop-page-footer > span { font-size: 7px; }
   .lookbook { padding-top: 58px; padding-bottom: 59px; }
   .lookbook-heading { grid-template-columns: 1fr; gap: 17px; margin-bottom: 24px; }
   .lookbook-heading h2 { font-size: clamp(40px, 10vw, 58px); }
