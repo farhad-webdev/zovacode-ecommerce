@@ -151,7 +151,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .rule-line { height: 1px; flex: 1; background: rgba(16,16,15,.17); }
 .manifesto-grid { display: grid; grid-template-columns: minmax(210px, .75fr) 1.75fr; gap: clamp(38px, 7vw, 110px); align-items: start; }
 .image-frame { position: relative; overflow: hidden; border-radius: 12px; background: #e8e4dc; }
-.image-frame img, .collection-photo img, .look-card img { height: 100%; object-fit: cover; transition: transform .8s var(--ease), filter .5s ease; }
+.image-frame img, .collection-photo img, .look-card img { height: 100%; object-fit: cover; transition: transform .8s var(--ease), filter .5s ease, opacity .25s ease; }
 .image-frame:hover img, .collection-photo:hover img, .look-card:hover img { transform: scale(1.045); }
 .manifesto-portrait { aspect-ratio: 3 / 4; }
 .manifesto-portrait img { object-position: center; }
@@ -189,6 +189,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .category-list { border-top: 1px solid var(--line); }
 .category-row { width: 100%; min-height: 63px; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 0; border: 0; border-bottom: 1px solid var(--line); background: transparent; cursor: pointer; text-align: left; transition: padding .25s var(--ease), color .25s ease; }
 .category-row:hover { padding-right: 10px; padding-left: 10px; color: #77756f; }
+.category-row:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .category-row > span:first-child { font-size: clamp(17px, 2vw, 23px); font-weight: 600; letter-spacing: -.055em; }
 .category-row small { margin-left: 4px; color: #93918a; font-size: 9px; font-weight: 400; letter-spacing: 0; }
 .category-row > .icon-arrow { width: 14px; height: 14px; transition: transform .25s ease; }
@@ -202,6 +203,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .collection-photo-offset { aspect-ratio: 4 / 5; margin-top: 40px; }
 .collection-photo-tall img { object-position: center; }
 .collection-photo-offset img { object-position: center; }
+.collection-photo img.is-changing { opacity: .45; }
 .photo-label { position: absolute; right: 10px; bottom: 10px; left: 10px; display: flex; justify-content: space-between; align-items: center; padding: 11px 14px; border: 1px solid rgba(255,255,255,.2); border-radius: 40px; background: rgba(14,14,14,.55); color: white; backdrop-filter: blur(8px); font-size: 9px; }
 .collection-stamp { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) rotate(-9deg); color: white; font-family: var(--display); font-size: clamp(18px, 3vw, 38px); font-weight: 700; letter-spacing: -.06em; line-height: .88; text-align: center; text-shadow: 0 2px 14px rgba(0,0,0,.35); }
 .collection-caption { grid-column: 1 / -1; margin-top: -6px; font-size: 9px; font-weight: 600; line-height: 1.6; }

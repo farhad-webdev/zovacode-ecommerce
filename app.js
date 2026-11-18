@@ -275,7 +275,64 @@
     closeMobileMenu();
     openAccount();
   }));
-  document.querySelectorAll("[data-category]").forEach((button) => button.addEventListener("click", () => openShop(button.dataset.category)));
+  const categoryPreviewImages = {
+    "T-shirts & Outerwear": [
+      { src: imageUrls.hoodie, alt: "Close detail of a heavyweight graphic hoodie", label: "AFTER HOURS / 01" },
+      { src: imageUrls.tee, alt: "A woman wearing a graphic blue jersey with relaxed streetwear", label: "STUDIO HEAVYWEIGHT / 02" },
+    ],
+    Denim: [
+      { src: imageUrls.everyday, alt: "A woman wearing light denim and neutral layers in the city", label: "CITY STRAIGHT / 01" },
+      { src: imageUrls.street, alt: "A man wearing a black jacket and dark cargo pants on a city street", label: "UTILITY CARGO / 02" },
+    ],
+    Footwear: [
+      { src: imageUrls.runner, alt: "Close detail of a technical trail sneaker outsole", label: "STORM RUNNER / 01" },
+      { src: imageUrls.club, alt: "A model in a neutral hoodie and white sneakers walking through the city", label: "NIGHT SHIFT / 02" },
+    ],
+    Accessories: [
+      { src: imageUrls.tote, alt: "A woman carrying a tan shoulder bag with relaxed streetwear", label: "EVERYDAY CARRY / 01" },
+      { src: imageUrls.hero, alt: "A woman wearing a dark beanie with streetwear on city steps", label: "HEADWEAR / 02" },
+    ],
+  };
+  const collectionPhotos = Array.from(document.querySelectorAll("[data-collection-photo]"));
+
+  function updateCategoryPreview(category) {
+    const previews = categoryPreviewImages[category];
+    if (!previews) {
+      console.error(`No collection previews configured for category: ${category}`);
+      return;
+    }
+
+    document.querySelector(".collection-visuals").dataset.activeCategory = category;
+    collectionPhotos.forEach((photo, index) => {
+      const preview = previews[index];
+      const image = photo.querySelector("img");
+      if (image.getAttribute("src") !== preview.src) {
+        image.classList.add("is-changing");
+        image.addEventListener("load", () => {
+          if (image.getAttribute("src") === preview.src) image.classList.remove("is-changing");
+        }, { once: true });
+        image.addEventListener("error", () => {
+          if (image.getAttribute("src") === preview.src) {
+            image.classList.remove("is-changing");
+            console.error(`Could not load collection preview image: ${preview.src}`);
+          }
+        }, { once: true });
+        image.src = preview.src;
+      }
+      image.alt = preview.alt;
+      photo.setAttribute("aria-label", `Explore ${category}: ${preview.label}`);
+      const photoLabel = photo.querySelector("[data-collection-photo-label]");
+      if (photoLabel) photoLabel.textContent = preview.label;
+    });
+  }
+
+  updateCategoryPreview("Footwear");
+  document.querySelectorAll(".category-list [data-category]").forEach((button) => {
+    const preview = () => updateCategoryPreview(button.dataset.category);
+    button.addEventListener("pointerenter", preview);
+    button.addEventListener("focus", preview);
+    button.addEventListener("click", () => openShop(button.dataset.category));
+  });
   document.querySelectorAll("[data-category-link]").forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
