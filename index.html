@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ZOVACODE — streetwear for people who move differently. Explore the latest collection and find your frequency."
+    />
+    <meta name="theme-color" content="#f8f7f4" />
+    <title>ZOVACODE® — Own the Moment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="announcement">
+      <p>GOOD THINGS COME TO THOSE WHO MOVE. <a href="#collections">EXPLORE THE DROP <span aria-hidden="true">↗</span></a></p>
+    </div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <button class="menu-toggle icon-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+          <span></span><span></span>
+        </button>
+        <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+          <a class="sale-link" href="#collections" data-category-link="Sale">New drop</a>
+          <a href="#collections" data-category-link="Men">Men</a>
+          <a href="#collections" data-category-link="Women">Women</a>
+          <a href="#lookbook">Lookbook</a>
+          <button class="mobile-account" type="button" data-open-account>Account <span aria-hidden="true">↗</span></button>
+        </nav>
+        <a class="wordmark" href="#" aria-label="ZOVACODE home">ZOVA<span>CODE</span><sup>®</sup></a>
+        <div class="header-actions">
+          <button class="text-button search-trigger" type="button" data-open-search>Search</button>
+          <button class="text-button account-trigger" type="button" data-open-account>Account</button>
+          <button class="text-button cart-trigger" type="button" data-open-cart>Bag <span class="cart-count" aria-live="polite">0</span></button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero page-gutter" aria-labelledby="hero-title">
+        <div class="hero-card">
+          <img
+            class="hero-image"
+            src="assets/hero-city.jpg"
+            alt="A streetwear model takes a quiet moment on the city steps"
+            fetchpriority="high"
+          />
+          <div class="hero-shade"></div>
+          <div class="hero-top">
+            <p>Late nights, loud music, and the restless spirit of a generation that <em>refuses to be defined.</em></p>
+            <a class="scroll-pill" href="#manifesto"><span class="scroll-dot"></span> Scroll to explore</a>
+          </div>
+          <div class="hero-meta">
+            <span>Independent by nature.</span>
+            <span class="hero-edition">ZOVACODE® / EST. MMXXIV</span>
+            <a href="#collections">Discover the collection <span aria-hidden="true">↗</span></a>
+          </div>
+          <h1 id="hero-title">Own the<br class="mobile-break" /> Moment<span>.</span></h1>
+          <span class="hero-index" aria-hidden="true">01 / 04</span>
+        </div>
+      </section>
+
+      <section class="manifesto section-wrap" id="manifesto">
+        <div class="section-rule">
+          <span>DON'T CHASE TRENDS.</span>
+          <span class="rule-line"></span>
+          <span>MAKE YOUR OWN.</span>
+        </div>
+        <div class="manifesto-grid">
+          <figure class="image-frame manifesto-portrait reveal">
+            <img
+              src="assets/manifesto-knit.jpg"
+              alt="A creative in a soft knit, looking straight at the camera"
+              loading="lazy"
+            />
+            <figcaption class="image-caption"><span>THE EVERYDAY ICON</span><span>↗</span></figcaption>
+          </figure>
+          <div class="manifesto-copy reveal">
+            <p class="eyebrow">A DIFFERENT KIND OF UNIFORM</p>
+            <h2>Built for people who live without waiting for permission — <em>who dress to express, not impress.</em></h2>
+            <div class="manifesto-bottom">
+              <div class="manifesto-note">
+                <p class="eyebrow">NOT LOST — JUST MOVING DIFFERENTLY.</p>
+                <p>From street corners, underground shows, and stories written in the dark. Made for those standing between chaos and creativity — and choosing both.</p>
+                <a class="pill-button pill-dark" href="#lookbook">Explore the lookbook <span>↗</span></a>
+              </div>
+              <figure class="image-frame manifesto-secondary">
+                <img
+                  src="assets/manifesto-streetwear.jpg"
+                  alt="Relaxed streetwear fit photographed outdoors"
+                  loading="lazy"
+                />
+                <figcaption class="secondary-mark">WORN YOUR WAY</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="manifesto-banner" aria-label="Brand manifesto">
+        <span>We are</span>
+        <span class="banner-center"><i></i> Independent by design <i></i></span>
+        <span>ZOVACODE<span class="banner-period">.</span></span>
+      </section>
+
+      <section class="collections section-wrap" id="collections">
+        <div class="section-kicker"><span>THE COLLECTIONS</span><span>FOR THE ONES WHO REFUSE TO FIT IN.</span></div>
+        <div class="collections-heading">
+          <h2>Inspired by city nights, raw energy, and the quiet rebellion of today's youth. <em>Made to be worn hard, lived in, and remembered.</em></h2>
+        </div>
+        <div class="collection-grid">
+          <div class="category-list" role="group" aria-label="Shop by category">
+            <button type="button" class="category-row" data-category="T-shirts & Outerwear"><span>T-shirts &amp; Outerwear <small>03</small></span><span>↗</span></button>
+            <button type="button" class="category-row" data-category="Denim"><span>Denim <small>02</small></span><span>↗</span></button>
+            <button type="button" class="category-row category-featured" data-category="Footwear"><span>Footwear <small>02</small></span><span class="category-cta">Shop the collection ↗</span></button>
+            <button type="button" class="category-row" data-category="Accessories"><span>Accessories <small>02</small></span><span>↗</span></button>
+            <p class="category-footnote">FIND YOUR FIT. KEEP YOUR EDGE.</p>
+          </div>
+          <div class="collection-visuals">
+            <a class="collection-photo collection-photo-tall" href="#lookbook" aria-label="Explore the Storm Runner">
+              <img src="assets/storm-runner.jpg" alt="Close detail of a chunky technical sneaker" loading="lazy" />
+              <span class="photo-label"><span>Storm Runner / 01</span><span>↗</span></span>
+            </a>
+            <a class="collection-photo collection-photo-offset" href="#lookbook" aria-label="Explore the streetwear collection">
+              <img src="assets/city-look.jpg" alt="A complete streetwear look, styled for the city" loading="lazy" />
+              <span class="collection-stamp">STAY<br />UNCOMMON</span>
+            </a>
+            <p class="collection-caption">Originality is louder than the crowd.<br /><span>Pieces for the in-between moments.</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="lookbook section-wrap" id="lookbook">
+        <div class="lookbook-heading">
+          <h2>Find your style —<br />find your frequency.</h2>
+          <div class="lookbook-intro">
+            <div><p class="eyebrow">THE YOUTH COLLECTIVE</p><p>Musicians, skaters, designers, photographers, dreamers, and rebels. There's room for you in the story.</p></div>
+            <a class="pill-button pill-outline" href="#community">Meet the collective <span>↗</span></a>
+          </div>
+        </div>
+        <div class="lookbook-grid">
+          <figure class="look-card look-card-one">
+            <img src="assets/lookbook-everyday.jpg" alt="Everyday layers for a late afternoon in the city" loading="lazy" />
+            <figcaption><span>01 — OWN YOUR EVERYDAY</span><span>↗</span></figcaption>
+          </figure>
+          <figure class="look-card look-card-two">
+            <img src="assets/lookbook-club.jpg" alt="Neutral hoodie styled with relaxed streetwear essentials" loading="lazy" />
+            <figcaption><span>02 — THE OWNER'S CLUB</span><span>↗</span></figcaption>
+          </figure>
+          <figure class="look-card look-card-three">
+            <img src="assets/lookbook-knit.jpg" alt="Warm knitwear meets a refined, relaxed fit" loading="lazy" />
+            <figcaption><span>03 — COMFORT IN EXPRESSION</span><span>↗</span></figcaption>
+          </figure>
+        </div>
+        <div class="lookbook-progress"><span></span><p>COMFORT IN EXPRESSION.</p></div>
+      </section>
+
+      <section class="community section-wrap" id="community">
+        <div class="community-copy">
+          <p class="eyebrow">TAKE PART IN THE STORY</p>
+          <div class="quote-block">
+            <blockquote id="community-quote">“ZOVACODE understands youth culture — because we're part of it.”</blockquote>
+            <div class="quote-controls">
+              <button type="button" data-quote-step="-1" aria-label="Previous story">←</button>
+              <button type="button" data-quote-step="1" aria-label="Next story">→</button>
+              <span id="quote-credit">MAYA R. / BROOKLYN</span>
+            </div>
+          </div>
+          <div class="community-note">
+            <div class="community-thumb">
+              <img src="assets/owners-club.jpg" alt="An expressive graphic sweatshirt detail" loading="lazy" />
+              <span>OWNERS' CLUB</span>
+            </div>
+            <div><p class="eyebrow">NOT JUST CLOTHING — A STYLE LANGUAGE.</p><p>Pieces made for movement, self-expression, and whatever comes next.</p><a href="#collections" class="text-link">Find your uniform <span>↗</span></a></div>
+          </div>
+        </div>
+        <figure class="community-feature image-frame">
+          <img src="assets/hoodie-detail.jpg" alt="A close-up look at a heavyweight graphic hoodie" loading="lazy" />
+          <figcaption>“MAKE YOUR OWN RULES.”<span>— AIDEN K., NEW YORK</span></figcaption>
+        </figure>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="footer">
+      <div class="footer-inner">
+        <div class="newsletter">
+          <div class="newsletter-copy">
+            <p class="eyebrow">[ NEWSLETTER / SUBCULTURE ]</p>
+            <h2>Join the community.<br />Become part of the story.</h2>
+            <p>Early access drops, new stories, and things worth opening.</p>
+          </div>
+          <form class="newsletter-form" id="newsletter-form">
+            <label for="newsletter-email">YOUR EMAIL, YOUR INVITATION.</label>
+            <div class="email-row">
+              <input id="newsletter-email" name="email" type="email" placeholder="ENTER YOUR EMAIL ADDRESS" autocomplete="email" required />
+              <button type="submit">Subscribe <span aria-hidden="true">↗</span></button>
+            </div>
+            <p class="form-feedback" id="newsletter-feedback" aria-live="polite"></p>
+          </form>
+        </div>
+        <div class="footer-links">
+          <div><p class="eyebrow">01 / EXPLORE</p><a href="#collections" data-category-link="Sale">New drop</a><a href="#collections" data-category-link="Men">Men</a><a href="#collections" data-category-link="Women">Women</a><a href="#lookbook">Lookbook</a></div>
+          <div><p class="eyebrow">02 / THE DETAILS</p><a href="mailto:hello@zovacode.com?subject=Shipping%20and%20returns">Shipping &amp; returns</a><a href="mailto:hello@zovacode.com?subject=Product%20care">Care guide</a><a href="mailto:hello@zovacode.com?subject=Privacy%20question">Privacy</a><a href="mailto:hello@zovacode.com?subject=Terms%20question">Terms</a></div>
+          <div><p class="eyebrow">03 / GET IN TOUCH</p><a href="mailto:hello@zovacode.com">hello@zovacode.com</a><a href="#community">Join the collective</a></div>
+          <div><p class="eyebrow">04 / FOLLOW ALONG</p><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://www.pinterest.com/" target="_blank" rel="noreferrer">Pinterest ↗</a><a href="https://www.tiktok.com/" target="_blank" rel="noreferrer">TikTok ↗</a></div>
+        </div>
+        <div class="footer-mark" aria-hidden="true">ZOVACODE<span>®</span></div>
+        <div class="footer-bottom"><span>© 2025 ZOVACODE® — ALL RIGHTS RESERVED.</span><span>MADE TO MOVE DIFFERENTLY.</span></div>
+      </div>
+    </footer>
+
+    <div class="overlay" data-overlay hidden></div>
+    <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping bag" aria-hidden="true">
+      <div class="drawer-header"><div><p class="eyebrow">YOUR EDIT</p><h2>Your bag <span class="drawer-count">(0)</span></h2></div><button class="close-button" type="button" data-close aria-label="Close shopping bag">×</button></div>
+      <div class="cart-items" id="cart-items"></div>
+      <div class="empty-cart" id="empty-cart"><span class="empty-bag-icon">✳</span><p>Your bag is taking a breather.</p><button class="text-link" type="button" data-close>Explore the collection ↗</button></div>
+      <div class="cart-footer" id="cart-footer" hidden>
+        <div class="cart-total"><span>Subtotal</span><strong id="cart-subtotal">$0.00</strong></div>
+        <p>Shipping and taxes calculated at checkout.</p>
+        <button class="checkout-button" type="button" data-checkout>Continue to checkout <span>↗</span></button>
+        <button class="text-link continue-shopping" type="button" data-close>Continue exploring</button>
+      </div>
+    </aside>
+
+    <dialog class="site-dialog" id="site-dialog" aria-labelledby="dialog-title">
+      <form method="dialog" class="dialog-close-form"><button class="close-button" aria-label="Close dialog">×</button></form>
+      <div class="dialog-content" id="dialog-content"></div>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
