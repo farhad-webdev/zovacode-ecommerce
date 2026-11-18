@@ -19,27 +19,41 @@
     <script src="app.js" defer></script>
   </head>
   <body>
+    <svg class="icon-library" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="icon-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" /></symbol>
+      <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5m7 7-7-7 7-7" /></symbol>
+      <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7" /></symbol>
+      <symbol id="icon-bag" viewBox="0 0 24 24"><path d="M5 8h14l1 13H4L5 8Z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></symbol>
+      <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8" /><path d="m16 16 4.5 4.5" /></symbol>
+      <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5" /><path d="M4.5 21a7.5 7.5 0 0 1 15 0" /></symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24"><path d="m18 6-12 12M6 6l12 12" /></symbol>
+      <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></symbol>
+      <symbol id="icon-minus" viewBox="0 0 24 24"><path d="M5 12h14" /></symbol>
+    </svg>
+
     <div class="announcement">
-      <p>GOOD THINGS COME TO THOSE WHO MOVE. <a href="#collections">EXPLORE THE DROP <span aria-hidden="true">↗</span></a></p>
+      <p>GOOD THINGS COME TO THOSE WHO MOVE. <a href="#collections">EXPLORE THE DROP <svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></a></p>
     </div>
 
     <header class="site-header">
       <div class="header-inner">
         <button class="menu-toggle icon-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
-          <span></span><span></span>
+          <svg class="icon menu-open-icon" aria-hidden="true"><use href="#icon-menu" /></svg>
+          <svg class="icon menu-close-icon" aria-hidden="true"><use href="#icon-x" /></svg>
         </button>
         <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
           <a class="sale-link" href="#collections" data-category-link="Sale">New drop</a>
           <a href="#collections" data-category-link="Men">Men</a>
           <a href="#collections" data-category-link="Women">Women</a>
           <a href="#lookbook">Lookbook</a>
-          <button class="mobile-account" type="button" data-open-account>Account <span aria-hidden="true">↗</span></button>
+          <button class="mobile-account" type="button" data-open-account>Account <svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></button>
         </nav>
         <a class="wordmark" href="#" aria-label="ZOVACODE home">ZOVA<span>CODE</span><sup>®</sup></a>
         <div class="header-actions">
-          <button class="text-button search-trigger" type="button" data-open-search>Search</button>
-          <button class="text-button account-trigger" type="button" data-open-account>Account</button>
-          <button class="text-button cart-trigger" type="button" data-open-cart>Bag <span class="cart-count" aria-live="polite">0</span></button>
+          <button class="text-button search-trigger" type="button" data-open-search><svg class="icon" aria-hidden="true"><use href="#icon-search" /></svg>Search</button>
+          <button class="text-button account-trigger" type="button" data-open-account><svg class="icon" aria-hidden="true"><use href="#icon-user" /></svg>Account</button>
+          <button class="text-button cart-trigger" type="button" data-open-cart><svg class="icon" aria-hidden="true"><use href="#icon-bag" /></svg>Bag <span class="cart-count" aria-live="polite">0</span></button>
         </div>
       </div>
     </header>
@@ -61,7 +75,7 @@
           <div class="hero-meta">
             <span>Independent by nature.</span>
             <span class="hero-edition">ZOVACODE® / EST. MMXXIV</span>
-            <a href="#collections">Discover the collection <span aria-hidden="true">↗</span></a>
+            <a href="#collections">Discover the collection <svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></a>
           </div>
           <h1 id="hero-title">Own the<br class="mobile-break" /> Moment<span>.</span></h1>
           <span class="hero-index" aria-hidden="true">01 / 04</span>
@@ -81,7 +95,7 @@
               alt="A creative in a soft knit, looking straight at the camera"
               loading="lazy"
             />
-            <figcaption class="image-caption"><span>THE EVERYDAY ICON</span><span>↗</span></figcaption>
+            <figcaption class="image-caption"><span>THE EVERYDAY ICON</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></figcaption>
           </figure>
           <div class="manifesto-copy reveal">
             <p class="eyebrow">A DIFFERENT KIND OF UNIFORM</p>
@@ -90,7 +104,7 @@
               <div class="manifesto-note">
                 <p class="eyebrow">NOT LOST — JUST MOVING DIFFERENTLY.</p>
                 <p>From street corners, underground shows, and stories written in the dark. Made for those standing between chaos and creativity — and choosing both.</p>
-                <a class="pill-button pill-dark" href="#lookbook">Explore the lookbook <span>↗</span></a>
+                <a class="pill-button pill-dark" href="#lookbook">Explore the lookbook <svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></a>
               </div>
               <figure class="image-frame manifesto-secondary">
                 <img
@@ -118,16 +132,16 @@
         </div>
         <div class="collection-grid">
           <div class="category-list" role="group" aria-label="Shop by category">
-            <button type="button" class="category-row" data-category="T-shirts & Outerwear"><span>T-shirts &amp; Outerwear <small>03</small></span><span>↗</span></button>
-            <button type="button" class="category-row" data-category="Denim"><span>Denim <small>02</small></span><span>↗</span></button>
-            <button type="button" class="category-row category-featured" data-category="Footwear"><span>Footwear <small>02</small></span><span class="category-cta">Shop the collection ↗</span></button>
-            <button type="button" class="category-row" data-category="Accessories"><span>Accessories <small>02</small></span><span>↗</span></button>
+            <button type="button" class="category-row" data-category="T-shirts & Outerwear"><span>T-shirts &amp; Outerwear <small>03</small></span><svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></button>
+            <button type="button" class="category-row" data-category="Denim"><span>Denim <small>02</small></span><svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></button>
+            <button type="button" class="category-row category-featured" data-category="Footwear"><span>Footwear <small>02</small></span><span class="category-cta">Shop the collection <svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span></button>
+            <button type="button" class="category-row" data-category="Accessories"><span>Accessories <small>02</small></span><svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></button>
             <p class="category-footnote">FIND YOUR FIT. KEEP YOUR EDGE.</p>
           </div>
           <div class="collection-visuals">
             <a class="collection-photo collection-photo-tall" href="#lookbook" aria-label="Explore the Storm Runner">
               <img src="assets/storm-runner.jpg" alt="Close detail of a chunky technical sneaker" loading="lazy" />
-              <span class="photo-label"><span>Storm Runner / 01</span><span>↗</span></span>
+              <span class="photo-label"><span>Storm Runner / 01</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></span>
             </a>
             <a class="collection-photo collection-photo-offset" href="#lookbook" aria-label="Explore the streetwear collection">
               <img src="assets/city-look.jpg" alt="A complete streetwear look, styled for the city" loading="lazy" />
@@ -143,21 +157,21 @@
           <h2>Find your style —<br />find your frequency.</h2>
           <div class="lookbook-intro">
             <div><p class="eyebrow">THE YOUTH COLLECTIVE</p><p>Musicians, skaters, designers, photographers, dreamers, and rebels. There's room for you in the story.</p></div>
-            <a class="pill-button pill-outline" href="#community">Meet the collective <span>↗</span></a>
+            <a class="pill-button pill-outline" href="#community">Meet the collective <svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></a>
           </div>
         </div>
         <div class="lookbook-grid">
           <figure class="look-card look-card-one">
             <img src="assets/lookbook-everyday.jpg" alt="Everyday layers for a late afternoon in the city" loading="lazy" />
-            <figcaption><span>01 — OWN YOUR EVERYDAY</span><span>↗</span></figcaption>
+            <figcaption><span>01 — OWN YOUR EVERYDAY</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></figcaption>
           </figure>
           <figure class="look-card look-card-two">
             <img src="assets/lookbook-club.jpg" alt="Neutral hoodie styled with relaxed streetwear essentials" loading="lazy" />
-            <figcaption><span>02 — THE OWNER'S CLUB</span><span>↗</span></figcaption>
+            <figcaption><span>02 — THE OWNER'S CLUB</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></figcaption>
           </figure>
           <figure class="look-card look-card-three">
             <img src="assets/lookbook-knit.jpg" alt="Warm knitwear meets a refined, relaxed fit" loading="lazy" />
-            <figcaption><span>03 — COMFORT IN EXPRESSION</span><span>↗</span></figcaption>
+            <figcaption><span>03 — COMFORT IN EXPRESSION</span><svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></figcaption>
           </figure>
         </div>
         <div class="lookbook-progress"><span></span><p>COMFORT IN EXPRESSION.</p></div>
@@ -169,8 +183,8 @@
           <div class="quote-block">
             <blockquote id="community-quote">“ZOVACODE understands youth culture — because we're part of it.”</blockquote>
             <div class="quote-controls">
-              <button type="button" data-quote-step="-1" aria-label="Previous story">←</button>
-              <button type="button" data-quote-step="1" aria-label="Next story">→</button>
+              <button type="button" data-quote-step="-1" aria-label="Previous story"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-left" /></svg></button>
+              <button type="button" data-quote-step="1" aria-label="Next story"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-right" /></svg></button>
               <span id="quote-credit">MAYA R. / BROOKLYN</span>
             </div>
           </div>
@@ -179,7 +193,7 @@
               <img src="assets/owners-club.jpg" alt="An expressive graphic sweatshirt detail" loading="lazy" />
               <span>OWNERS' CLUB</span>
             </div>
-            <div><p class="eyebrow">NOT JUST CLOTHING — A STYLE LANGUAGE.</p><p>Pieces made for movement, self-expression, and whatever comes next.</p><a href="#collections" class="text-link">Find your uniform <span>↗</span></a></div>
+            <div><p class="eyebrow">NOT JUST CLOTHING — A STYLE LANGUAGE.</p><p>Pieces made for movement, self-expression, and whatever comes next.</p><a href="#collections" class="text-link">Find your uniform <svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></a></div>
           </div>
         </div>
         <figure class="community-feature image-frame">
@@ -201,7 +215,7 @@
             <label for="newsletter-email">YOUR EMAIL, YOUR INVITATION.</label>
             <div class="email-row">
               <input id="newsletter-email" name="email" type="email" placeholder="ENTER YOUR EMAIL ADDRESS" autocomplete="email" required />
-              <button type="submit">Subscribe <span aria-hidden="true">↗</span></button>
+              <button type="submit">Subscribe <svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></button>
             </div>
             <p class="form-feedback" id="newsletter-feedback" aria-live="polite"></p>
           </form>
@@ -210,7 +224,7 @@
           <div><p class="eyebrow">01 / EXPLORE</p><a href="#collections" data-category-link="Sale">New drop</a><a href="#collections" data-category-link="Men">Men</a><a href="#collections" data-category-link="Women">Women</a><a href="#lookbook">Lookbook</a></div>
           <div><p class="eyebrow">02 / THE DETAILS</p><a href="mailto:hello@zovacode.com?subject=Shipping%20and%20returns">Shipping &amp; returns</a><a href="mailto:hello@zovacode.com?subject=Product%20care">Care guide</a><a href="mailto:hello@zovacode.com?subject=Privacy%20question">Privacy</a><a href="mailto:hello@zovacode.com?subject=Terms%20question">Terms</a></div>
           <div><p class="eyebrow">03 / GET IN TOUCH</p><a href="mailto:hello@zovacode.com">hello@zovacode.com</a><a href="#community">Join the collective</a></div>
-          <div><p class="eyebrow">04 / FOLLOW ALONG</p><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://www.pinterest.com/" target="_blank" rel="noreferrer">Pinterest ↗</a><a href="https://www.tiktok.com/" target="_blank" rel="noreferrer">TikTok ↗</a></div>
+          <div><p class="eyebrow">04 / FOLLOW ALONG</p><a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram <svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></a><a href="https://www.pinterest.com/" target="_blank" rel="noreferrer">Pinterest <svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></a><a href="https://www.tiktok.com/" target="_blank" rel="noreferrer">TikTok <svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></a></div>
         </div>
         <div class="footer-mark" aria-hidden="true">ZOVACODE<span>®</span></div>
         <div class="footer-bottom"><span>© 2025 ZOVACODE® — ALL RIGHTS RESERVED.</span><span>MADE TO MOVE DIFFERENTLY.</span></div>
@@ -219,19 +233,19 @@
 
     <div class="overlay" data-overlay hidden></div>
     <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping bag" aria-hidden="true">
-      <div class="drawer-header"><div><p class="eyebrow">YOUR EDIT</p><h2>Your bag <span class="drawer-count">(0)</span></h2></div><button class="close-button" type="button" data-close aria-label="Close shopping bag">×</button></div>
+      <div class="drawer-header"><div><p class="eyebrow">YOUR EDIT</p><h2>Your bag <span class="drawer-count">(0)</span></h2></div><button class="close-button" type="button" data-close aria-label="Close shopping bag"><svg class="icon" aria-hidden="true"><use href="#icon-x" /></svg></button></div>
       <div class="cart-items" id="cart-items"></div>
-      <div class="empty-cart" id="empty-cart"><span class="empty-bag-icon">✳</span><p>Your bag is taking a breather.</p><button class="text-link" type="button" data-close>Explore the collection ↗</button></div>
+      <div class="empty-cart" id="empty-cart"><svg class="icon empty-bag-icon" aria-hidden="true"><use href="#icon-bag" /></svg><p>Your bag is taking a breather.</p><button class="text-link" type="button" data-close>Explore the collection <svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></button></div>
       <div class="cart-footer" id="cart-footer" hidden>
         <div class="cart-total"><span>Subtotal</span><strong id="cart-subtotal">$0.00</strong></div>
         <p>Shipping and taxes calculated at checkout.</p>
-        <button class="checkout-button" type="button" data-checkout>Continue to checkout <span>↗</span></button>
+        <button class="checkout-button" type="button" data-checkout>Continue to checkout <svg class="icon icon-arrow" aria-hidden="true"><use href="#icon-arrow-up-right" /></svg></button>
         <button class="text-link continue-shopping" type="button" data-close>Continue exploring</button>
       </div>
     </aside>
 
     <dialog class="site-dialog" id="site-dialog" aria-labelledby="dialog-title">
-      <form method="dialog" class="dialog-close-form"><button class="close-button" aria-label="Close dialog">×</button></form>
+      <form method="dialog" class="dialog-close-form"><button class="close-button" aria-label="Close dialog"><svg class="icon" aria-hidden="true"><use href="#icon-x" /></svg></button></form>
       <div class="dialog-content" id="dialog-content"></div>
     </dialog>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>

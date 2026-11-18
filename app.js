@@ -1,4 +1,6 @@
 (() => {
+  const icon = (name, className = "icon") => `<svg class="${className}" aria-hidden="true" focusable="false"><use href="#icon-${name}"></use></svg>`;
+
   const imageUrls = {
     hero: "assets/hero-city.jpg",
     knit: "assets/manifesto-knit.jpg",
@@ -70,6 +72,13 @@
     document.body.classList.toggle("is-locked", dialog.open || cartDrawer.classList.contains("is-open"));
   }
 
+  function closeMobileMenu() {
+    document.querySelector(".primary-nav").classList.remove("is-open");
+    const menuToggle = document.querySelector(".menu-toggle");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open menu");
+  }
+
   function showToast(message) {
     toast.textContent = message;
     toast.classList.add("is-visible");
@@ -95,12 +104,6 @@
       if (!filter || filter === "Sale") return true;
       if (filter === "Men" || filter === "Women") return product.audience.includes(filter);
       return product.category === filter;
-    });
-    document.querySelectorAll(".primary-nav a:not([data-category-link])").forEach((link) => {
-      link.addEventListener("click", () => {
-        document.querySelector(".primary-nav").classList.remove("is-open");
-        document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
-      });
     });
     const title = filter && filter !== "Sale" ? filter : "The latest drop";
     showDialog(`
@@ -138,7 +141,7 @@
   }
 
   function searchResult(product) {
-    return `<a class="search-result" href="#collections" data-search-category="${product.category}"><span>${product.name}</span><span>${formatPrice(product.price)} ↗</span></a>`;
+    return `<a class="search-result" href="#collections" data-search-category="${product.category}"><span>${product.name}</span><span>${formatPrice(product.price)} ${icon("arrow-up-right", "icon icon-arrow")}</span></a>`;
   }
 
   function updateSearchResults(event) {
@@ -158,7 +161,7 @@
       <form class="dialog-form" id="account-form">
         <label for="account-email">Email address</label>
         <input id="account-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
-        <button type="submit">Keep me posted <span>↗</span></button>
+        <button type="submit">Keep me posted ${icon("arrow-up-right", "icon icon-arrow")}</button>
       </form>
       <p class="dialog-feedback" id="account-feedback" aria-live="polite"></p>
     `);
@@ -219,9 +222,9 @@
             <strong>${product.name}</strong>
             <span>Size: ${line.size}</span>
             <div class="quantity-stepper" aria-label="Quantity for ${product.name}">
-              <button type="button" data-cart-action="decrease" data-id="${product.id}" data-size="${line.size}" aria-label="Decrease quantity">−</button>
+              <button type="button" data-cart-action="decrease" data-id="${product.id}" data-size="${line.size}" aria-label="Decrease quantity">${icon("minus")}</button>
               <span>${line.quantity}</span>
-              <button type="button" data-cart-action="increase" data-id="${product.id}" data-size="${line.size}" aria-label="Increase quantity">+</button>
+              <button type="button" data-cart-action="increase" data-id="${product.id}" data-size="${line.size}" aria-label="Increase quantity">${icon("plus")}</button>
             </div>
           </div>
           <span class="cart-line-price">${formatPrice(product.price * line.quantity)}</span>
@@ -269,27 +272,26 @@
   document.querySelectorAll("[data-open-cart]").forEach((button) => button.addEventListener("click", openCart));
   document.querySelectorAll("[data-open-search]").forEach((button) => button.addEventListener("click", openSearch));
   document.querySelectorAll("[data-open-account]").forEach((button) => button.addEventListener("click", () => {
-    document.querySelector(".primary-nav").classList.remove("is-open");
-    document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
+    closeMobileMenu();
     openAccount();
   }));
   document.querySelectorAll("[data-category]").forEach((button) => button.addEventListener("click", () => openShop(button.dataset.category)));
   document.querySelectorAll("[data-category-link]").forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
-      document.querySelector(".primary-nav").classList.remove("is-open");
-      document.querySelector(".menu-toggle").setAttribute("aria-expanded", "false");
+      closeMobileMenu();
       openShop(link.dataset.categoryLink);
     });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && cartDrawer.classList.contains("is-open")) closeCart();
-    });
+  });
+  document.querySelectorAll(".primary-nav a:not([data-category-link])").forEach((link) => {
+    link.addEventListener("click", closeMobileMenu);
   });
 
   document.querySelector(".menu-toggle").addEventListener("click", (event) => {
     const button = event.currentTarget;
     const expanded = button.getAttribute("aria-expanded") === "true";
     button.setAttribute("aria-expanded", String(!expanded));
+    button.setAttribute("aria-label", expanded ? "Open menu" : "Close menu");
     document.querySelector(".primary-nav").classList.toggle("is-open", !expanded);
   });
 
@@ -301,6 +303,9 @@
   dialog.addEventListener("close", () => {
     syncScrollLock();
     if (lastFocusedElement && typeof lastFocusedElement.focus === "function") lastFocusedElement.focus();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && cartDrawer.classList.contains("is-open")) closeCart();
   });
 
   document.addEventListener("click", (event) => {
