@@ -68,6 +68,36 @@
     return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(amount);
   }
 
+  function productCardMarkup(product) {
+    return `
+      <article class="product-card">
+        <div class="product-image"><img src="${product.image}" alt="${product.name}" loading="lazy"><span class="product-tag">${product.tag}</span></div>
+        <div class="product-info"><strong>${product.name}</strong><span>${formatPrice(product.price)}</span></div>
+        <div class="product-buy-row">
+          <select aria-label="Select a size for ${product.name}" data-size-for="${product.id}">
+            ${product.sizes.map((size) => `<option value="${size}">${size}</option>`).join("")}
+          </select>
+          <button type="button" data-add-to-cart="${product.id}">Add to bag</button>
+        </div>
+      </article>
+    `;
+  }
+
+  const shopPage = document.querySelector("[data-shop-page]");
+  const shopPageProducts = document.querySelector("[data-shop-page-products]");
+  if (shopPage && shopPageProducts) {
+    const audience = shopPage.dataset.shopPage;
+    const pageProducts = products.filter((product) => product.audience.includes(audience));
+    if (pageProducts.length) {
+      shopPageProducts.innerHTML = pageProducts.map(productCardMarkup).join("");
+      const count = document.querySelector("[data-shop-page-count]");
+      if (count) count.textContent = `${pageProducts.length} PIECES`;
+    } else {
+      console.error(`No products found for collection page: ${audience}`);
+      shopPageProducts.textContent = "This collection is currently unavailable.";
+    }
+  }
+
   function syncScrollLock() {
     document.body.classList.toggle("is-locked", dialog.open || cartDrawer.classList.contains("is-open"));
   }
@@ -111,18 +141,7 @@
       <h2 id="dialog-title">${title}</h2>
       <p class="dialog-lead">Considered essentials. Built for the everyday and everything after.</p>
       <div class="product-grid">
-        ${filtered.map((product) => `
-          <article class="product-card">
-            <div class="product-image"><img src="${product.image}" alt="${product.name}" loading="lazy"><span class="product-tag">${product.tag}</span></div>
-            <div class="product-info"><strong>${product.name}</strong><span>${formatPrice(product.price)}</span></div>
-            <div class="product-buy-row">
-              <select aria-label="Select a size for ${product.name}" data-size-for="${product.id}">
-                ${product.sizes.map((size) => `<option value="${size}">${size}</option>`).join("")}
-              </select>
-              <button type="button" data-add-to-cart="${product.id}">Add to bag</button>
-            </div>
-          </article>
-        `).join("")}
+        ${filtered.map(productCardMarkup).join("")}
       </div>
     `);
   }
@@ -293,46 +312,48 @@
       { src: imageUrls.hero, alt: "A woman wearing a dark beanie with streetwear on city steps", label: "HEADWEAR / 02" },
     ],
   };
-  const collectionPhotos = Array.from(document.querySelectorAll("[data-collection-photo]"));
+  if (document.querySelector(".collection-visuals")) {
+    const collectionPhotos = Array.from(document.querySelectorAll("[data-collection-photo]"));
 
-  function updateCategoryPreview(category) {
-    const previews = categoryPreviewImages[category];
-    if (!previews) {
-      console.error(`No collection previews configured for category: ${category}`);
-      return;
+    function updateCategoryPreview(category) {
+      const previews = categoryPreviewImages[category];
+      if (!previews) {
+        console.error(`No collection previews configured for category: ${category}`);
+        return;
+      }
+
+      document.querySelector(".collection-visuals").dataset.activeCategory = category;
+      collectionPhotos.forEach((photo, index) => {
+        const preview = previews[index];
+        const image = photo.querySelector("img");
+        if (image.getAttribute("src") !== preview.src) {
+          image.classList.add("is-changing");
+          image.addEventListener("load", () => {
+            if (image.getAttribute("src") === preview.src) image.classList.remove("is-changing");
+          }, { once: true });
+          image.addEventListener("error", () => {
+            if (image.getAttribute("src") === preview.src) {
+              image.classList.remove("is-changing");
+              console.error(`Could not load collection preview image: ${preview.src}`);
+            }
+          }, { once: true });
+          image.src = preview.src;
+        }
+        image.alt = preview.alt;
+        photo.setAttribute("aria-label", `Explore ${category}: ${preview.label}`);
+        const photoLabel = photo.querySelector("[data-collection-photo-label]");
+        if (photoLabel) photoLabel.textContent = preview.label;
+      });
     }
 
-    document.querySelector(".collection-visuals").dataset.activeCategory = category;
-    collectionPhotos.forEach((photo, index) => {
-      const preview = previews[index];
-      const image = photo.querySelector("img");
-      if (image.getAttribute("src") !== preview.src) {
-        image.classList.add("is-changing");
-        image.addEventListener("load", () => {
-          if (image.getAttribute("src") === preview.src) image.classList.remove("is-changing");
-        }, { once: true });
-        image.addEventListener("error", () => {
-          if (image.getAttribute("src") === preview.src) {
-            image.classList.remove("is-changing");
-            console.error(`Could not load collection preview image: ${preview.src}`);
-          }
-        }, { once: true });
-        image.src = preview.src;
-      }
-      image.alt = preview.alt;
-      photo.setAttribute("aria-label", `Explore ${category}: ${preview.label}`);
-      const photoLabel = photo.querySelector("[data-collection-photo-label]");
-      if (photoLabel) photoLabel.textContent = preview.label;
+    updateCategoryPreview("Footwear");
+    document.querySelectorAll(".category-list [data-category]").forEach((button) => {
+      const preview = () => updateCategoryPreview(button.dataset.category);
+      button.addEventListener("pointerenter", preview);
+      button.addEventListener("focus", preview);
+      button.addEventListener("click", () => openShop(button.dataset.category));
     });
   }
-
-  updateCategoryPreview("Footwear");
-  document.querySelectorAll(".category-list [data-category]").forEach((button) => {
-    const preview = () => updateCategoryPreview(button.dataset.category);
-    button.addEventListener("pointerenter", preview);
-    button.addEventListener("focus", preview);
-    button.addEventListener("click", () => openShop(button.dataset.category));
-  });
   document.querySelectorAll("[data-category-link]").forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
@@ -369,8 +390,12 @@
     const addButton = event.target.closest("[data-add-to-cart]");
     if (addButton) {
       const productId = addButton.dataset.addToCart;
-      const size = dialog.querySelector(`[data-size-for="${productId}"]`).value;
-      addToCart(productId, size);
+      const sizeSelect = addButton.closest(".product-card").querySelector(`[data-size-for="${productId}"]`);
+      if (!sizeSelect) {
+        console.error(`No size selector found for product: ${productId}`);
+        return;
+      }
+      addToCart(productId, sizeSelect.value);
       return;
     }
     const cartButton = event.target.closest("[data-cart-action]");
@@ -396,77 +421,82 @@
   });
 
   const lookbookTrack = document.querySelector("#lookbook-track");
-  const lookbookSlides = Array.from(lookbookTrack.querySelectorAll(".look-card"));
-  const lookbookProgressTrack = document.querySelector(".lookbook-progress-track");
-  const lookbookProgressFill = document.querySelector("[data-lookbook-progress]");
-  const lookbookCaption = document.querySelector("[data-lookbook-caption]");
-  const lookbookStatus = document.querySelector("[data-lookbook-status]");
-  const lookbookButtons = Array.from(document.querySelectorAll("[data-lookbook-step]"));
-  let lookbookStartIndex = 0;
-  let lookbookMaxIndex = 0;
-  let lookbookScrollFrame = 0;
+  if (lookbookTrack) {
+    const lookbookSlides = Array.from(lookbookTrack.querySelectorAll(".look-card"));
+    const lookbookProgressTrack = document.querySelector(".lookbook-progress-track");
+    const lookbookProgressFill = document.querySelector("[data-lookbook-progress]");
+    const lookbookCaption = document.querySelector("[data-lookbook-caption]");
+    const lookbookStatus = document.querySelector("[data-lookbook-status]");
+    const lookbookButtons = Array.from(document.querySelectorAll("[data-lookbook-step]"));
+    let lookbookStartIndex = 0;
+    let lookbookMaxIndex = 0;
+    let lookbookScrollFrame = 0;
 
-  function getLookbookStep() {
-    if (lookbookSlides.length < 2) return 0;
-    return lookbookSlides[1].getBoundingClientRect().left - lookbookSlides[0].getBoundingClientRect().left;
-  }
+    function getLookbookStep() {
+      if (lookbookSlides.length < 2) return 0;
+      return lookbookSlides[1].getBoundingClientRect().left - lookbookSlides[0].getBoundingClientRect().left;
+    }
 
-  function updateLookbookSlider() {
-    const step = getLookbookStep();
-    const maxScroll = Math.max(0, lookbookTrack.scrollWidth - lookbookTrack.clientWidth);
-    lookbookMaxIndex = step ? Math.round(maxScroll / step) : 0;
-    lookbookStartIndex = step ? Math.max(0, Math.min(lookbookMaxIndex, Math.round(lookbookTrack.scrollLeft / step))) : 0;
+    function updateLookbookSlider() {
+      const step = getLookbookStep();
+      const maxScroll = Math.max(0, lookbookTrack.scrollWidth - lookbookTrack.clientWidth);
+      lookbookMaxIndex = step ? Math.round(maxScroll / step) : 0;
+      lookbookStartIndex = step ? Math.max(0, Math.min(lookbookMaxIndex, Math.round(lookbookTrack.scrollLeft / step))) : 0;
 
-    const visibleCount = step ? Math.min(lookbookSlides.length, Math.max(1, Math.round(lookbookTrack.clientWidth / step))) : lookbookSlides.length;
-    const endIndex = Math.min(lookbookSlides.length, lookbookStartIndex + visibleCount);
-    const progress = ((lookbookStartIndex + 1) / (lookbookMaxIndex + 1)) * 100;
-    const caption = lookbookSlides[lookbookStartIndex].querySelector("figcaption span").textContent;
+      const visibleCount = step ? Math.min(lookbookSlides.length, Math.max(1, Math.round(lookbookTrack.clientWidth / step))) : lookbookSlides.length;
+      const endIndex = Math.min(lookbookSlides.length, lookbookStartIndex + visibleCount);
+      const progress = ((lookbookStartIndex + 1) / (lookbookMaxIndex + 1)) * 100;
+      const caption = lookbookSlides[lookbookStartIndex].querySelector("figcaption span").textContent;
 
-    lookbookProgressFill.style.width = `${progress}%`;
-    lookbookProgressTrack.setAttribute("aria-valuenow", String(Math.round(progress)));
-    lookbookProgressTrack.setAttribute("aria-valuetext", `Showing items ${lookbookStartIndex + 1} through ${endIndex} of ${lookbookSlides.length}`);
-    lookbookCaption.textContent = caption.replace(/^\d+\s*[—-]\s*/, "");
-    lookbookStatus.textContent = `Showing items ${lookbookStartIndex + 1} through ${endIndex} of ${lookbookSlides.length}`;
+      lookbookProgressFill.style.width = `${progress}%`;
+      lookbookProgressTrack.setAttribute("aria-valuenow", String(Math.round(progress)));
+      lookbookProgressTrack.setAttribute("aria-valuetext", `Showing items ${lookbookStartIndex + 1} through ${endIndex} of ${lookbookSlides.length}`);
+      lookbookCaption.textContent = caption.replace(/^\d+\s*[—-]\s*/, "");
+      lookbookStatus.textContent = `Showing items ${lookbookStartIndex + 1} through ${endIndex} of ${lookbookSlides.length}`;
+      lookbookButtons.forEach((button) => {
+        const direction = Number(button.dataset.lookbookStep);
+        button.disabled = direction < 0 ? lookbookStartIndex === 0 : lookbookStartIndex === lookbookMaxIndex;
+      });
+    }
+
+    function moveLookbook(direction) {
+      const nextIndex = Math.max(0, Math.min(lookbookMaxIndex, lookbookStartIndex + direction));
+      const step = getLookbookStep();
+      lookbookTrack.scrollTo({
+        left: nextIndex * step,
+        behavior: "auto",
+      });
+      updateLookbookSlider();
+    }
+
     lookbookButtons.forEach((button) => {
-      const direction = Number(button.dataset.lookbookStep);
-      button.disabled = direction < 0 ? lookbookStartIndex === 0 : lookbookStartIndex === lookbookMaxIndex;
+      button.addEventListener("click", () => moveLookbook(Number(button.dataset.lookbookStep)));
     });
-  }
-
-  function moveLookbook(direction) {
-    const nextIndex = Math.max(0, Math.min(lookbookMaxIndex, lookbookStartIndex + direction));
-    const step = getLookbookStep();
-    lookbookTrack.scrollTo({
-      left: nextIndex * step,
-      behavior: "auto",
+    lookbookTrack.addEventListener("scroll", () => {
+      if (lookbookScrollFrame) return;
+      lookbookScrollFrame = requestAnimationFrame(() => {
+        lookbookScrollFrame = 0;
+        updateLookbookSlider();
+      });
+    }, { passive: true });
+    lookbookTrack.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        moveLookbook(event.key === "ArrowLeft" ? -1 : 1);
+      }
     });
+    window.addEventListener("resize", updateLookbookSlider, { passive: true });
     updateLookbookSlider();
   }
 
-  lookbookButtons.forEach((button) => {
-    button.addEventListener("click", () => moveLookbook(Number(button.dataset.lookbookStep)));
-  });
-  lookbookTrack.addEventListener("scroll", () => {
-    if (lookbookScrollFrame) return;
-    lookbookScrollFrame = requestAnimationFrame(() => {
-      lookbookScrollFrame = 0;
-      updateLookbookSlider();
-    });
-  }, { passive: true });
-  lookbookTrack.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+  const newsletterForm = document.querySelector("#newsletter-form");
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      moveLookbook(event.key === "ArrowLeft" ? -1 : 1);
-    }
-  });
-  window.addEventListener("resize", updateLookbookSlider, { passive: true });
-  updateLookbookSlider();
-
-  document.querySelector("#newsletter-form").addEventListener("submit", (event) => {
-    event.preventDefault();
-    document.querySelector("#newsletter-feedback").textContent = "Thanks for your interest — newsletter sign-up will be available at launch.";
-    event.target.reset();
-  });
+      document.querySelector("#newsletter-feedback").textContent = "Thanks for your interest — newsletter sign-up will be available at launch.";
+      event.target.reset();
+    });
+  }
   dialogContent.addEventListener("submit", (event) => {
     if (event.target.matches("#account-form")) {
       event.preventDefault();
@@ -501,6 +531,9 @@
     ".lookbook-progress p",
     ".community-copy",
     ".community-feature figcaption",
+    ".shop-page-hero-copy",
+    ".shop-page-image",
+    ".shop-page-products",
     ".newsletter-copy",
     ".newsletter-form label",
     ".footer-links",
@@ -527,7 +560,7 @@
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const heroImage = document.querySelector(".hero-image");
   let scrollQueued = false;
-  if (!reducedMotion) window.addEventListener("scroll", () => {
+  if (!reducedMotion && heroImage) window.addEventListener("scroll", () => {
     if (scrollQueued) return;
     scrollQueued = true;
     requestAnimationFrame(() => {
