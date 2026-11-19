@@ -15,8 +15,8 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=cursor-removed-1" />
-    <script src="app.js?v=cursor-removed-1" defer></script>
+    <link rel="stylesheet" href="style.css?v=hero-video-1" />
+    <script src="app.js?v=hero-video-1" defer></script>
   </head>
   <body>
     <svg class="icon-library" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
@@ -61,12 +61,9 @@
     <main>
       <section class="hero page-gutter" aria-labelledby="hero-title">
         <div class="hero-card">
-          <img
-            class="hero-image"
-            src="assets/hero-city.jpg"
-            alt="A streetwear model takes a quiet moment on the city steps"
-            fetchpriority="high"
-          />
+          <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-city.jpg" aria-hidden="true">
+            <source src="assets/hero-streetwear.mp4" type="video/mp4" />
+          </video>
           <div class="hero-shade"></div>
           <div class="hero-top">
             <p>Late nights, loud music, and the restless spirit of a generation that <em>refuses to be defined.</em></p>

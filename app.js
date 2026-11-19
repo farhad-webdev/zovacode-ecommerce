@@ -577,9 +577,10 @@
   }
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const heroImage = document.querySelector(".hero-image");
+  const heroVideo = document.querySelector(".hero-video");
+  if (reducedMotion && heroVideo) heroVideo.pause();
   let scrollQueued = false;
-  if (!reducedMotion && heroImage) window.addEventListener("scroll", () => {
+  if (!reducedMotion && heroVideo) window.addEventListener("scroll", () => {
     if (scrollQueued) return;
     scrollQueued = true;
     requestAnimationFrame(() => {
@@ -587,7 +588,7 @@
       const rect = hero.getBoundingClientRect();
       if (rect.bottom > 0 && rect.top < window.innerHeight) {
         const shift = Math.min(20, Math.max(-20, (window.innerHeight - rect.top) * .025));
-        heroImage.style.transform = `scale(1.04) translateY(${shift}px)`;
+        heroVideo.style.transform = `scale(1.04) translateY(${shift}px)`;
       }
       scrollQueued = false;
     });

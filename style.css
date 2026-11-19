@@ -118,8 +118,8 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   background: #262420;
   color: white;
 }
-.hero-image, .hero-shade { position: absolute; z-index: -1; inset: 0; width: 100%; height: 100%; }
-.hero-image { object-fit: cover; object-position: center 52%; filter: saturate(.72) contrast(1.05); transform: scale(1.04); }
+.hero-video, .hero-shade { position: absolute; z-index: -1; inset: 0; width: 100%; height: 100%; }
+.hero-video { object-fit: cover; object-position: center 52%; filter: saturate(.72) contrast(1.05); transform: scale(1.04); }
 .hero-shade { background: linear-gradient(180deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,.06) 34%, rgba(0,0,0,.08) 58%, rgba(0,0,0,.64) 100%); }
 .hero-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
 .hero-top p { max-width: 440px; font-size: clamp(15px, 1.65vw, 23px); font-weight: 400; line-height: 1.25; letter-spacing: -.035em; }
@@ -472,7 +472,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .primary-nav .mobile-account { display: flex; justify-content: space-between; align-items: center; padding: 13px 0; border: 0; border-top: 1px solid var(--line); background: transparent; cursor: pointer; font-size: 11px; font-weight: 600; letter-spacing: .065em; text-align: left; text-transform: uppercase; }
   .page-gutter { padding: 9px 9px 0; }
   .hero-card { min-height: 560px; height: calc(83svh - 88px); max-height: 760px; padding: 24px 21px; border-radius: 11px; }
-  .hero-image { object-position: 54% center; }
+  .hero-video { object-position: 54% center; }
   .hero-top p { max-width: 285px; font-size: 16px; }
   .scroll-pill { padding: 8px 10px; font-size: 0; }
   .scroll-dot { width: 7px; height: 7px; }
