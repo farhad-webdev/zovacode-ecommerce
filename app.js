@@ -518,34 +518,48 @@
     }
   });
 
-  const textRevealSelectors = [
+  const revealSelectors = [
     ".hero-top",
     ".hero-meta",
     "#hero-title",
     ".section-rule",
+    ".manifesto-copy > .eyebrow",
+    ".manifesto-copy > h2",
+    ".manifesto-note",
     ".manifesto-banner",
     ".section-kicker",
-    ".collections-heading",
-    ".category-list",
-    ".photo-label",
+    ".collections-heading h2",
+    ".category-row",
+    ".category-footnote",
     ".collection-stamp",
     ".collection-caption",
-    ".secondary-mark",
     ".lookbook-heading",
-    ".look-card figcaption",
-    ".lookbook-progress p",
-    ".community-copy",
-    ".community-feature figcaption",
+    ".lookbook-progress",
+    ".community-copy > .eyebrow",
+    ".quote-block",
+    ".community-note > div:last-child",
     ".shop-page-hero-copy",
-    ".shop-page-image",
-    ".shop-page-products",
+    ".shop-page-products-heading",
     ".newsletter-copy",
-    ".newsletter-form label",
+    ".newsletter-form",
     ".footer-links",
     ".footer-mark",
     ".footer-bottom",
   ].join(", ");
-  document.querySelectorAll(textRevealSelectors).forEach((item) => item.classList.add("reveal"));
+  const mediaRevealSelectors = [
+    ".manifesto-portrait",
+    ".manifesto-secondary",
+    ".collections-feature",
+    ".category-promo",
+    ".collection-photo",
+    ".look-card",
+    ".community-thumb",
+    ".community-feature",
+    ".shop-page-image",
+    ".product-grid-page .product-card",
+  ].join(", ");
+  document.querySelectorAll(revealSelectors).forEach((item) => item.classList.add("reveal"));
+  document.querySelectorAll(mediaRevealSelectors).forEach((item) => item.classList.add("reveal", "reveal-media"));
 
   const revealItems = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
