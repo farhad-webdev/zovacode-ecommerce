@@ -577,45 +577,6 @@
   }
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  if (!reducedMotion && finePointer) {
-    const cursor = document.createElement("div");
-    cursor.className = "custom-cursor";
-    cursor.setAttribute("aria-hidden", "true");
-    cursor.innerHTML = '<span class="custom-cursor-ring"></span><span class="custom-cursor-dot"></span>';
-    document.body.append(cursor);
-    document.body.classList.add("has-custom-cursor");
-
-    const interactiveSelector = "a, button, [role='button'], [data-cursor-hover]";
-    const excludedSelector = "input, textarea, select, [contenteditable='true']";
-
-    document.addEventListener("pointermove", (event) => {
-      const target = event.target instanceof Element ? event.target : null;
-      if (target && target.closest(excludedSelector)) {
-        cursor.classList.remove("is-visible", "is-hovering");
-        return;
-      }
-
-      cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0) translate(-50%, -50%)`;
-      cursor.classList.add("is-visible");
-    }, { passive: true });
-
-    document.addEventListener("pointerover", (event) => {
-      if (event.target instanceof Element && event.target.closest(interactiveSelector)) {
-        cursor.classList.add("is-hovering");
-      }
-    });
-    document.addEventListener("pointerout", (event) => {
-      const fromInteractive = event.target instanceof Element && event.target.closest(interactiveSelector);
-      const toInteractive = event.relatedTarget instanceof Element && event.relatedTarget.closest(interactiveSelector);
-      if (fromInteractive && !toInteractive) cursor.classList.remove("is-hovering");
-      if (!event.relatedTarget) cursor.classList.remove("is-visible", "is-hovering");
-    });
-    document.addEventListener("pointerdown", () => cursor.classList.add("is-clicking"));
-    document.addEventListener("pointerup", () => cursor.classList.remove("is-clicking"));
-    window.addEventListener("blur", () => cursor.classList.remove("is-visible", "is-hovering", "is-clicking"));
-  }
-
   const heroImage = document.querySelector(".hero-image");
   let scrollQueued = false;
   if (!reducedMotion && heroImage) window.addEventListener("scroll", () => {

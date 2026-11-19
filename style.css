@@ -33,23 +33,6 @@ button, input { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 button { color: inherit; }
 a { color: inherit; text-decoration: none; }
-@media (hover: hover) and (pointer: fine) {
-  body.has-custom-cursor,
-  body.has-custom-cursor a,
-  body.has-custom-cursor button,
-  body.has-custom-cursor [role="button"],
-  body.has-custom-cursor [data-cursor-hover] { cursor: none; }
-  body.has-custom-cursor input,
-  body.has-custom-cursor textarea,
-  body.has-custom-cursor select,
-  body.has-custom-cursor [contenteditable="true"] { cursor: auto; }
-}
-.custom-cursor { position: fixed; z-index: 9999; top: 0; left: 0; width: 34px; height: 34px; pointer-events: none; opacity: 0; mix-blend-mode: difference; transform: translate3d(-100px,-100px,0); transition: opacity .18s ease, transform .1s linear; }
-.custom-cursor.is-visible { opacity: 1; }
-.custom-cursor-ring { position: absolute; inset: 0; border: 1px solid #fff; border-radius: 50%; background: transparent; transition: transform .24s var(--ease), background .24s ease; }
-.custom-cursor-dot { position: absolute; top: 50%; left: 50%; width: 4px; height: 4px; border-radius: 50%; background: #fff; transform: translate(-50%,-50%); }
-.custom-cursor.is-hovering .custom-cursor-ring { background: rgba(255,255,255,.14); transform: scale(1.35); }
-.custom-cursor.is-clicking .custom-cursor-ring { transform: scale(.82); }
 img { display: block; width: 100%; }
 figure, p, h1, h2, blockquote { margin: 0; }
 button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid #9a6e3d; outline-offset: 4px; }
