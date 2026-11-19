@@ -163,9 +163,9 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .manifesto-copy h2 em { letter-spacing: -.045em; }
 .word-hover-image { position: relative; display: inline-block; cursor: pointer; }
 .word-hover-label { position: relative; z-index: 1; display: inline-block; transition: color .25s ease; }
-.word-hover-card { position: absolute; z-index: 2; bottom: calc(100% + 12px); left: 50%; width: clamp(64px, 6vw, 76px); aspect-ratio: 1; padding: 4px; overflow: hidden; border: 1px solid rgba(16,16,15,.1); border-radius: 8px; background: #f8f6f1; box-shadow: 0 16px 38px rgba(16,16,15,.2); opacity: 0; pointer-events: none; transform: translate(-50%, 14px) rotate(-7deg) scale(.9); transform-origin: 50% 100%; transition: opacity .28s ease, transform .42s var(--ease), visibility .28s ease; visibility: hidden; }
-.word-hover-card img { width: 100%; height: 100%; border-radius: 5px; object-fit: cover; }
-.word-hover-card > span { position: absolute; right: 7px; bottom: 7px; left: 7px; padding: 6px 3px; border: 1px solid rgba(255,255,255,.3); border-radius: 20px; background: rgba(16,16,15,.42); color: white; font-family: var(--body); font-size: 5px; font-style: normal; font-weight: 600; letter-spacing: .1em; line-height: 1; text-align: center; }
+.word-hover-card { position: absolute; z-index: 2; bottom: calc(100% + 12px); left: 50%; width: clamp(192px, 18vw, 228px); aspect-ratio: 1; padding: 10px; overflow: hidden; border: 1px solid rgba(16,16,15,.1); border-radius: 16px; background: #f8f6f1; box-shadow: 0 24px 58px rgba(16,16,15,.24); opacity: 0; pointer-events: none; transform: translate(-50%, 20px) rotate(-7deg) scale(.9); transform-origin: 50% 100%; transition: opacity .28s ease, transform .42s var(--ease), visibility .28s ease; visibility: hidden; }
+.word-hover-card img { width: 100%; height: 100%; border-radius: 10px; object-fit: cover; }
+.word-hover-card > span { position: absolute; right: 16px; bottom: 16px; left: 16px; padding: 10px 8px; border: 1px solid rgba(255,255,255,.3); border-radius: 20px; background: rgba(16,16,15,.42); color: white; font-family: var(--body); font-size: 9px; font-style: normal; font-weight: 600; letter-spacing: .12em; line-height: 1; text-align: center; }
 .word-hover-image-permission .word-hover-card { right: calc(100% + 12px); bottom: 0; left: auto; transform: translate(0, 14px) rotate(6deg) scale(.9); }
 .word-hover-image-impress .word-hover-card { bottom: 0; left: calc(100% + 12px); transform: translate(0, 14px) rotate(-4deg) scale(.9); }
 .word-hover-image:is(:hover, :focus, :active) .word-hover-card { opacity: 1; transform: translate(-50%, 0) rotate(-3deg) scale(1); visibility: visible; }
@@ -420,6 +420,9 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .manifesto { padding-top: 70px; padding-bottom: 76px; }
   .manifesto-grid { grid-template-columns: .7fr 1.3fr; gap: 34px; }
   .manifesto-copy h2 { font-size: clamp(36px, 5.3vw, 55px); }
+  .word-hover-image-permission .word-hover-card, .word-hover-image-impress .word-hover-card { right: auto; bottom: calc(100% + 12px); left: 50%; transform: translate(-50%, 20px) rotate(-5deg) scale(.9); }
+  .word-hover-image-permission:is(:hover, :focus, :active) .word-hover-card { transform: translate(-50%, 0) rotate(3deg) scale(1); }
+  .word-hover-image-impress:is(:hover, :focus, :active) .word-hover-card { transform: translate(-50%, 0) rotate(-2deg) scale(1); }
   .manifesto-bottom { grid-template-columns: 1fr; }
   .manifesto-secondary { width: min(100%, 340px); justify-self: end; }
   .collection-grid { grid-template-columns: .8fr 1.2fr; gap: 35px; }
@@ -473,9 +476,10 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .manifesto-copy { padding-top: 0; }
   .manifesto-copy > .eyebrow { margin-bottom: 10px; }
   .manifesto-copy h2 { font-size: clamp(37px, 9.2vw, 59px); line-height: .98; }
-  .word-hover-card { width: clamp(48px, 14vw, 56px); bottom: calc(100% + 8px); }
+  .word-hover-card { width: clamp(144px, 42vw, 168px); max-width: calc(100vw - 32px); bottom: calc(100% + 8px); }
   .word-hover-card > span { display: none; }
-  .word-hover-image-permission .word-hover-card, .word-hover-image-impress .word-hover-card { right: auto; bottom: calc(100% + 8px); left: 50%; transform: translate(-50%, 14px) rotate(-5deg) scale(.9); }
+  .word-hover-card { left: max(50%, 84px); }
+  .word-hover-image-permission .word-hover-card, .word-hover-image-impress .word-hover-card { right: auto; bottom: calc(100% + 8px); left: max(50%, 84px); transform: translate(-50%, 14px) rotate(-5deg) scale(.9); }
   .word-hover-image-permission:is(:hover, :focus, :active) .word-hover-card { transform: translate(-50%, 0) rotate(3deg) scale(1); }
   .word-hover-image-impress:is(:hover, :focus, :active) .word-hover-card { transform: translate(-50%, 0) rotate(-2deg) scale(1); }
   .manifesto-bottom { grid-template-columns: 1fr 1fr; gap: 18px; align-items: end; margin-top: 30px; }
