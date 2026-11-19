@@ -469,7 +469,7 @@
       const step = getLookbookStep();
       lookbookTrack.scrollTo({
         left: nextIndex * step,
-        behavior: "auto",
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
       });
       updateLookbookSlider();
     }

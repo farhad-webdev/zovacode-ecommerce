@@ -277,7 +277,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .lookbook-intro > div { max-width: 360px; }
 .lookbook-intro .eyebrow { margin-bottom: 9px; }
 .lookbook-intro > div > p:last-child { color: #696760; font-size: 14px; line-height: 1.7; }
-.lookbook-grid { --lookbook-gap: clamp(12px, 2vw, 28px); display: flex; gap: var(--lookbook-gap); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.lookbook-grid { --lookbook-gap: clamp(12px, 2vw, 28px); display: flex; gap: var(--lookbook-gap); overflow-x: auto; overscroll-behavior-x: contain; scroll-behavior: smooth; scroll-snap-type: x mandatory; scrollbar-width: none; }
 .lookbook-grid::-webkit-scrollbar { display: none; }
 .look-card { position: relative; flex: 0 0 calc((100% - var(--lookbook-gap) - var(--lookbook-gap)) / 3); overflow: hidden; aspect-ratio: 3 / 3.8; border-radius: 11px; background: #e8e4dc; scroll-snap-align: start; }
 .look-card img { position: absolute; inset: 0; }
