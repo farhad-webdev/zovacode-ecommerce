@@ -72,12 +72,17 @@
     return `
       <article class="product-card">
         <div class="product-image"><img src="${product.image}" alt="${product.name}" loading="lazy"><span class="product-tag">${product.tag}</span></div>
-        <div class="product-info"><strong>${product.name}</strong><span>${formatPrice(product.price)}</span></div>
+        <div class="product-info">
+          <div class="product-copy"><span class="product-category">${product.category}</span><strong>${product.name}</strong></div>
+          <span class="product-price">${formatPrice(product.price)}</span>
+        </div>
         <div class="product-buy-row">
-          <select aria-label="Select a size for ${product.name}" data-size-for="${product.id}">
-            ${product.sizes.map((size) => `<option value="${size}">${size}</option>`).join("")}
-          </select>
-          <button type="button" data-add-to-cart="${product.id}">Add to bag</button>
+          <div class="product-size-control">
+            <select aria-label="Select a size for ${product.name}" data-size-for="${product.id}">
+              ${product.sizes.map((size) => `<option value="${size}">${size}</option>`).join("")}
+            </select>
+          </div>
+          <button type="button" data-add-to-cart="${product.id}">Add to bag ${icon("arrow-up-right", "icon icon-arrow")}</button>
         </div>
       </article>
     `;
